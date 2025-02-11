@@ -1,0 +1,30 @@
+import {useEffect } from 'react'
+import axios from 'axios'
+
+function App() {
+
+  const API_URL = "https://api.themoviedb.org/3"
+
+  const fetchMovies = async () => {
+    const data = await axios.get(`${API_URL}/discover/movie`, {
+      params:{
+        api_key: process.env.REACT_APP_MOVIE_API_KEY
+      }
+    })
+
+    console.log("data", data)
+  }
+
+  useEffect(() => {
+    fetchMovies()
+  }, [])
+
+  return (
+    <div>Hello world</div>
+  )
+}
+
+export default App
+
+
+.env REACT_APP_MOVIE_API_KEY=c037e12da8630f7d8f8d8911c49349dd
